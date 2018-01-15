@@ -1,0 +1,48 @@
+﻿@model WebApplication2.Models.RevendaModels
+
+<div class="example">
+    <table id="editing-example" class="table footable footable-1 breakpoint breakpoint-sm" data-sorting="true" style="display: table;">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    <form class="form-inline"></form>
+                </th>
+            </tr>
+            <tr class="footable-header">
+                <th data-name="id" data-breakpoints="xs" data-type="number" class="footable-sortable footable-first-visible" style="display: table-cell;">ID<span class="fooicon fooicon-sort"></span></th>
+                <th data-name="logradouro" class="footable-sortable" style="display: table-cell;">Logradouro<span class="fooicon fooicon-sort"></span></th>
+                <th data-name="cep" class="footable-sortable" style="display: table-cell;">CEP<span class="fooicon fooicon-sort"></span></th>
+                <th data-name="Numero" class="footable-sortable" style="display: table-cell;">Número<span class="fooicon fooicon-sort"></span></th>
+                <th data-name="acoesEndereco" class="footable-editing" style="display: none;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var item in Model.Enderecos)*@
+            @for (Int32 i = 0; i < Model.Enderecos.Count(); i++)
+            {
+                <tr>
+                    <td id="Id@(i)">@Html.DisplayFor(modalItem => Model.Enderecos[i].Id)</td>
+                    <td id="Logradouro@(i)">
+                        @Html.DisplayFor(modelItem => Model.Enderecos[i].Logradouro)
+                    </td>
+                    <td id="Cep@(i)">
+                        @Html.DisplayFor(modelItem => Model.Enderecos[i].CEP)
+                    </td>
+                    <td id="Numero@(i)">
+                        @Html.DisplayFor(modelItem => Model.Enderecos[i].Numero)
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-xs" role="group">
+                            <button type="button" class="btn btn-default editarEndereco" data-row-id="@(i)">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default removerEndereco" data-row-id="@(i)">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
